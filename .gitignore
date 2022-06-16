@@ -1,0 +1,4 @@
+venv/
+*.flt
+c/flatex
+.vscode/
