@@ -2,3 +2,4 @@ venv/
 *.flt
 c/flatex
 .vscode/
+__pycache__/
