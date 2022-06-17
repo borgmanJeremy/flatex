@@ -1,5 +1,6 @@
 venv/
 *.flt
-c/flatex
 .vscode/
 __pycache__/
+dist/
+flatex.egg-info/

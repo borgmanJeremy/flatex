@@ -4,6 +4,8 @@ import sys
 import argparse
 import re
 
+__version__ = '0.0.3'
+__name__ = 'flatex'
 
 def parse_args(input_args: list[str]):
     """Parses terminal arguments and returns the parsed arguments"""
@@ -65,6 +67,6 @@ def flat_file(input_args):
     print(f"\tFile: {output_file_name} generated")
 
 
-if __name__ == "__main__":
+def cli():
     args = parse_args(sys.argv[1:])
     flat_file(args)
