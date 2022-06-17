@@ -10,15 +10,8 @@ def parse_args(input_args: list[str]):
     parser = argparse.ArgumentParser(
         description="create a single latex file with no include/inputs"
     )
-
     parser.add_argument(
         "-v", "--verbose", action="store_true", help="Display file structure"
-    )
-    parser.add_argument(
-        "-q", "--quiet", action="store_true", help="Quiet mode with cleaner output"
-    )
-    parser.add_argument(
-        "-b", action="store_true", help="Do not insert bibliography file(.bbl)"
     )
     parser.add_argument("filename")
     return parser.parse_args(input_args)
@@ -46,11 +39,13 @@ def get_included_file_name(input_line: str) -> str:
     return res[0] + ".tex"
 
 
-def flat_it(input_file: TextIOWrapper, output_file: TextIOWrapper):
+def flat_it(input_file: TextIOWrapper, output_file: TextIOWrapper, verbose: bool):
     """Reads input file and writes as a flat file"""
     for input_line in input_file:
         if is_nested(input_line):
             included_file_name = get_included_file_name(input_line)
+            if verbose:
+                print(f"Expanding [{included_file_name}]")
             inflate(included_file_name, output_file)
         else:
             output_file.write(input_line)
@@ -59,13 +54,14 @@ def flat_it(input_file: TextIOWrapper, output_file: TextIOWrapper):
 def flat_file(input_args):
     """Reads input file and writes as a flat file"""
     input_file_name = input_args.filename
+    verbose = input_args.verbose
     with open(input_file_name, encoding="utf-8") as input_file:
         print(f"input file: {input_file_name}")
 
         output_file_name = Path(input_file_name).with_suffix(".flt")
 
         with open(output_file_name, "w", encoding="utf-8") as output_file:
-            flat_it(input_file, output_file)
+            flat_it(input_file, output_file, verbose)
     print(f"\tFile: {output_file_name} generated")
 
 

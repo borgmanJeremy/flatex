@@ -10,20 +10,6 @@ class TestParse(unittest.TestCase):
         args = parse_args(["test.txt"])
         self.assertFalse(args.verbose)
 
-    def test_quiet(self):
-        args = parse_args(["-q", "test.txt"])
-        self.assertTrue(args.quiet)
-
-        args = parse_args(["test.txt"])
-        self.assertFalse(args.quiet)
-
-    def test_bib(self):
-        args = parse_args(["-b", "test.txt"])
-        self.assertTrue(args.b)
-
-        args = parse_args(["test.txt"])
-        self.assertFalse(args.b)
-
 
 class TestIncludedFileName(unittest.TestCase):
     def test_simple_case(self):
