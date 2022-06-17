@@ -4,8 +4,6 @@ import sys
 import argparse
 import re
 
-__version__ = '0.0.3'
-__name__ = 'flatex'
 
 def parse_args(input_args: list[str]):
     """Parses terminal arguments and returns the parsed arguments"""

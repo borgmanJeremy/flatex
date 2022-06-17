@@ -1,6 +1,5 @@
 import unittest
-from flatex import get_included_file_name, parse_args
-
+from .flatex import get_included_file_name, parse_args
 
 class TestParse(unittest.TestCase):
     def test_verbose(self):
