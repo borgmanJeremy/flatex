@@ -5,7 +5,7 @@ This is inspired by the C program "flatex" for flattening a LaTex project that u
 The basic way to use this program is to navigate to the directory with your highest level .tex file and simply call 
 
 ```
-python <top_level.tex>
+python3 -m flatex <top_level.tex>
 ```
 
 Then this program will output a fully expanded version

@@ -29,6 +29,7 @@ def inflate(included_path: str, output_file: TextIOWrapper):
     with open(included_path, encoding="utf-8") as included_file:
         for input_line in included_file:
             output_file.write(input_line)
+        output_file.write('\n')
 
 
 def get_included_file_name(input_line: str) -> str:
